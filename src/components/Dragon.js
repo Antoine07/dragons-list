@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React from 'react';
 
-const Dragon = ({dragons, count}) => {
+const Dragon = ({ dragons, count }) => {
     return (
         <ul className="list-group">
-            <h1>Number count : {count}</h1>
+            <h1><small>Number of dragon(s): {count}</small></h1>
             {dragons.map(dragon => (
                 <li className="list-group-item">{dragon}</li>
             ))}
@@ -15,8 +15,8 @@ const Dragon = ({dragons, count}) => {
 
 const mapStateToProps = (state) => {
     return {
-        dragons : state.dragons,
-        count : state.count
+        dragons: state.dragons,
+        count: state.count
     }
 }
 

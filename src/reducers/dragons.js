@@ -5,7 +5,6 @@ const stateInit = {
         "Apalala",
         "Balaur",
         "Bolla",
-        "Ludovic"
     ],
     count: 4
 };
@@ -13,8 +12,15 @@ const stateInit = {
 const reducerDragon = (state = stateInit, action = {}) => {
     switch (action.type) {
         case ADD_DRAGON:
-            // TODO
-            return 
+
+            const Dragons = [...state.dragons, action.dragon]
+
+            return { 
+                ...state, 
+                dragons: Dragons,
+                count : Dragons.length
+             };
+
         default:
             return state;
     }
