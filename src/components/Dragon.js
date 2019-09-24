@@ -2,31 +2,21 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 
+import Message from './Message';
+
 import { remove } from '../actions/actions-types';
 
 const Dragon = ({ dragons, count, remove, message }) => {
 
     // deux paramètres le nom du state et la fonction qui met à jour le state
-    const [flashMessage, setFlashMessage] = useState(message);
 
     const handleDelete = (dragon) => {
         remove(dragon);
     };
 
-    useEffect(() =>{
-
-        console.log(message);
-
-        // montage/démontage
-        return () => {
-
-        }
-    }, [flashMessage]); // useEffect ne sera exécuté que si le state de flashMessage est modifié
-
-
     return (
         <ul className="list-group">
-            {message? <p>{message}</p> : null}
+            { message ? <Message message={message} /> : null }
             <h1><small>Number of dragon(s): {count}</small></h1>
             {dragons.map((dragon, index) => (
                 <li key={index} className="list-group-item">{dragon}

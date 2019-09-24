@@ -1,4 +1,4 @@
-import { ADD_DRAGON, REMOVE_DRAGON } from '../constants/constants';
+import { ADD_DRAGON, REMOVE_DRAGON, RESET_MESSAGE } from '../constants/constants';
 
 const stateInit = {
     dragons: [
@@ -6,12 +6,13 @@ const stateInit = {
         "Balaur",
         "Bolla",
     ],
-    count: 4,
+    count: 3,
     message: null
 };
 
 const reducerDragon = (state = stateInit, action = {}) => {
     let dragons = [];
+    let count ;
 
     switch (action.type) {
 
@@ -19,16 +20,16 @@ const reducerDragon = (state = stateInit, action = {}) => {
 
             const dragon = action.dragon;
 
-            if ( state.dragons.includes(dragon) === true ) {
-                
-                return { 
-                    ...state, 
-                    message: `Le dragon ${dragon} existe déjà` 
+            if (state.dragons.includes(dragon) === true) {
+
+                return {
+                    ...state,
+                    message: `Le dragon ${dragon} existe déjà`
                 };
             }
 
             dragons = [...state.dragons, action.dragon];
-            const count = dragons.length;
+            count = dragons.length;
 
             return {
                 ...state,
@@ -40,12 +41,18 @@ const reducerDragon = (state = stateInit, action = {}) => {
         case REMOVE_DRAGON:
 
             dragons = state.dragons.filter(dragon => dragon != action.dragon);
-
-            return { 
-                ...state, 
-                dragons, 
-                message : `La suppression du dragon : ${action.dragon} c'est bien passé` 
+            count = dragons.length;
+            return {
+                ...state,
+                dragons,
+                message: `La suppression du dragon : ${action.dragon} c'est bien passé`,
+                count : count
             }
+
+        case RESET_MESSAGE:
+
+
+            return { ...state, message: null}
 
         default:
             return state;

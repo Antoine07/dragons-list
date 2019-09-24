@@ -1,6 +1,7 @@
 import {
     ADD_DRAGON,
-    REMOVE_DRAGON
+    REMOVE_DRAGON,
+    RESET_MESSAGE
 } from '../constants/constants';
 
 
@@ -15,5 +16,11 @@ export const remove = (dragon) => {
     return {
         type: REMOVE_DRAGON,
         dragon
+    }
+};
+
+export const resetMessage = () => {
+    return {
+        type: RESET_MESSAGE
     }
 };

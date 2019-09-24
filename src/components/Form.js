@@ -24,7 +24,6 @@ const Form = ({add, message}) => {
     return (
         <div className="form">
             <form onSubmit={handleSubmit} >
-                {message ? <p className="alert-danger alert">{message}</p> : null}
                 <div className="form-group">
                     <label htmlFor="name">Ajoutez un dragon</label>
                     <input
