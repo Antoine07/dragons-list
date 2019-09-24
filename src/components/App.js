@@ -7,11 +7,7 @@ import Dragon from './Dragon';
 import Form from './Form';
 import Nav from './Nav';
 
-const App = ({store}) => {
-
-    useEffect(() => {
-        console.log('store', store);
-    }, []);
+const App = () => {
 
     return (
         <div className="container">
@@ -30,6 +26,7 @@ const App = ({store}) => {
 
 const mapStateToProps = (state) => {
    
+    return state
 }
 
 export default connect(mapStateToProps)(App);

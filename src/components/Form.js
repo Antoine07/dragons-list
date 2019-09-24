@@ -4,27 +4,27 @@ import PropTypes from 'prop-types';
 
 import { add } from '../actions/actions-types';
 
-const Form = (props) => {
+const Form = ({add, message}) => {
 
     const [validate, setValidate] = useState(false);
     const [dragon, setDragon] = useState(null);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (validate === true) props.add(dragon)
+        if (validate === true) add(dragon)
     };
 
     const handleChange = (event) => {
         const dragon = event.target.value;
         const valid = dragon.length > 3 ? true : false;
         setValidate(valid);
-
-        if (valid) setDragon(dragon);
+        setDragon(dragon);
     }
 
     return (
         <div className="form">
             <form onSubmit={handleSubmit} >
+                {message ? <p className="alert-danger alert">{message}</p> : null}
                 <div className="form-group">
                     <label htmlFor="name">Ajoutez un dragon</label>
                     <input
@@ -54,4 +54,11 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(Form)
+const mapStateToProps = ({message}) =>{
+    
+    return {
+        message : message
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form)

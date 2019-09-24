@@ -1,5 +1,6 @@
 import {
-    ADD_DRAGON
+    ADD_DRAGON,
+    REMOVE_DRAGON
 } from '../constants/constants';
 
 
@@ -10,8 +11,9 @@ export const add = (dragon) => {
     }
 };
 
-// export const remove = () => {
-//     return {
-//         type: REMOVE_DRADON
-//     }
-// };
+export const remove = (dragon) => {
+    return {
+        type: REMOVE_DRAGON,
+        dragon
+    }
+};
